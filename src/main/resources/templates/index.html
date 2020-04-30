@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+    <title>Etusivu</title>
+</head>
+<body>
+
+    <div >
+
+        <h3>Etusivu</h3>
+        <h3  th:inline="text" >Tervetuloa [[${#httpServletRequest.remoteUser}]]</h3>
+        <div  style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+
+        <a href="/kyselylista" class="btn btn-primary">Hallinnoi Kyselyitä</a>
+        
+        <a href="/kysymyslista" class="btn btn-primary">Kysymys Lista</a>
+       
+        
+
+    </div>
+
+</body>
+</html>
