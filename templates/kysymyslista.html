@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Listaa Kysymykset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
+</head>
+<body>
+
+	<div>
+
+		<h3>Lista Kysymyksistä</h3>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Kysymys ID</th>
+					<th>Kysymys</th>
+					<th>Kysymys tyyppi</th>
+					<th>vaihtoehto 1</th>
+					<th>vaihtoehto 2</th>
+					<th>vaihtoehto 3</th>
+					<th>Kysely</th>
+				</tr>
+			</thead>
+
+			<tr th:each=" kysymys : ${kysymysLista}">
+				<td th:text="${kysymys.kysymysID}"></td>
+				<td th:text="${kysymys.kysymys}"></td>
+				<td th:text="${kysymys.kysymysType}"></td>
+				<td th:text="${kysymys.vaihtoehto}"></td>
+				<td th:text="${kysymys.vaihtoehto1}"></td>
+				<td th:text="${kysymys.vaihtoehto2}"></td>
+				<td th:text="${kysymys.kysely}"></td>
+				<td><a th:href="@{/delete/{id}(id=${kysymys.kysymysID})}"
+					class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">Delete</a></td>
+				<td><a th:href="@{/edit/{id}(id=${kysymys.kysymysID})}"
+					class="btn btn-warning" sec:authorize="hasAuthority('ADMIN')">Muokkaa
+						Kysymystä</a></td>
+			</tr>
+		</table>
+
+		<a href="/addkysymys" class="btn btn-success">Lisää Kysymys</a> <a
+			href="/index" class="btn btn-primary">Etusivu</a>
+
+	</div>
+
+</body>
+
+</html>

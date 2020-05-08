@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Muokkaa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+	<h1>Muokkaa Kyselyä</h1>
+	<div>
+		<form th:object="${kysely}" th:action="@{../savekysely}" action="#"
+			method="post">
+
+			<label for="KyselyID"></label> <input type="hidden" id="KyselyID"
+				th:field="*{KyselyID}" readonly="readonly" /> <label
+				for="kyselyName">Kyselyn Nimi: </label> <input type="text"
+				id="kyselyName" th:field="*{kyselyName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="kyselyDesc">Kyselyn Kuvaus: </label> <input type="text"
+				id="KyselyDesc" th:field="*{kyselyDesc}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<div></div>
+
+
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

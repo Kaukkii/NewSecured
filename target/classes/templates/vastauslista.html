@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Listaa Kysymykset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
+</head>
+<body>
+
+	<div>
+
+		<h3>Lista Vastauksista</h3>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Vastaus ID</th>
+					<th>Vastaaja</th>
+					<th>Vastaus</th>
+					<th>Kysymys</th>
+					
+					
+				</tr>
+			</thead>
+
+			<tr th:each=" vastaus : ${vastausLista}">
+				<td th:text="${vastaus.vastausID}"></td>
+				<td th:text="${vastaus.vastaaja}"></td>
+				<td th:text="${vastaus.vastaus}"></td>
+				<td th:text="${vastaus.Kysymys}"></td>
+				
+				
+			</tr>
+		</table>
+
+		 <a href="/index" class="btn btn-primary">Etusivu</a>
+
+	</div>
+
+</body>
+
+</html>
