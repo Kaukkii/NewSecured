@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Kaikki kyselyt</title>
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div>
+
+		<h3>Lista Kyselyistä</h3>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Kyselyn ID</th>
+					<th>kysely Nimi</th>
+					<th>Kyselyn Kuvaus</th>
+				</tr>
+			</thead>
+
+				<tr th:each=" kysely : ${kyselylista}">
+				<td th:text="${kysely.KyselyID}"></td>
+				<td th:text="${kysely.kyselyName}"></td>
+				<td th:text="${kysely.kyselyDesc}"></td>
+				<td><a th:href="@{/deletekysely/{id}(id=${kysely.KyselyID})}"
+					class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">Delete</a></td>
+				<td><a th:href="@{/editkysely/{id}(id=${kysely.KyselyID})}"
+					class="btn btn-warning" sec:authorize="hasAuthority('ADMIN')">Muokkaa
+						Kyselyä</a></td>
+			</tr>
+		</table>
+
+		<a href="/addkysely" class="btn btn-success">Lisää uusi Kysely</a> <a
+			href="/index" class="btn btn-primary">Etusivu</a>
+
+	</div>
+
+</body>
+
+</html>

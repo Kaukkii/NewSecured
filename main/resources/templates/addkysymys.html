@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Lisää</title>
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div>
+
+		<h3>Lisää Kysymys</h3>
+		<br>
+
+		<form th:object="${kysymys}" th:action="@{savekysymys}" method="post">
+
+			<div>
+				<label for="Kysymys">Kysymys</label> <input type="text"
+					id="Kysymys" th:field="*{Kysymys}">
+			</div>
+			
+
+			<div>
+				<select id="kysymystype" th:field="*{kysymysType}">
+					<option value="choose">Valitse kysymys tyyppi</option>
+					<option th:value="Teksti">Teksti</option>
+					<option th:value="Monivalinta">Monivalinta</option>
+					
+				</select>
+			</div>
+			<br>
+
+			<div>
+				<label for="kysely">Mihin kyselyyn kysymys kuuluu?:</label> <br>
+				<select id="KyselyID" th:field="*{kysely}">
+					<option value="Valitse">Valitse kysely</option>
+					<option th:each="kysely : ${kyselyt}" th:value="${kysely.KyselyID}"
+						th:text="${kysely.kyselyName}"></option>
+				</select>
+
+			</div>
+			<br>
+
+			<button type="submit" class="btn btn-success">Tallenna
+				Kysymys</button>
+			<a href="/kysymyslista" class="btn btn-danger">Peruuta</a> <a
+				href="/index" class="btn btn-primary">Etusivu</a>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

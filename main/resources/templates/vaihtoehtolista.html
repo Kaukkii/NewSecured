@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Muokkaa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+
+    <div>
+
+        <h3>Lisää Vaihtoehto</h3>
+        <br>
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+
+                    <th>Vaihtoehto ID</th>
+                    <th>Vaihtoehto</th>
+                    <th>Kysymys</th>
+                </tr>
+            </thead>
+
+            <tr th:each=" vaihtoehto : ${vaihtoehdot}" >
+
+
+                <td th:text="${vaihtoehto.vaihtoehtoId}"></td>
+                <td th:text="${vaihtoehto.vaihtoehto}"></td>
+                <td th:text="${vaihtoehto.kysymys.kysymys}"></td>
+				<td><a th:href="@{/deletevaihtoehto/{id}(id=${vaihtoehto.vaihtoehtoId})}"
+					class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">Delete</a></td>
+
+
+
+
+
+            </tr>
+
+
+
+        </table>
+
+        <a href="/addvaihtoehto" class="btn btn-success">Lisää Vaihtoehto</a> <a
+            href="/index" class="btn btn-primary">Etusivu</a>
+    </div>
+
+</body>
+
+</html>

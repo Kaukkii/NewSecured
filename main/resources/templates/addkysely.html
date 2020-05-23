@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Lisää</title>
+
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+	<div>
+
+		<h3>Lisää Kysely</h3>
+		<br>
+
+		<form th:object="${kysely}" th:action="@{savekysely}" method="post">
+
+			<div>
+				<label for="kyselyName">Nimeä Kysely</label> <br> <input
+					type="text" id="kyselyName" th:field="*{kyselyName}">
+			</div>
+			<br>
+
+			<div>
+				<label for="kyselyDesc">Anna Kuvaus</label> <br> <input
+					type="text" id="kyselyDesc" th:field="*{kyselyDesc}">
+			</div>
+			<br>
+
+			<button type="submit" class="btn btn-success">Tallenna
+				Kysely</button>
+			<a href="/kyselylista" class="btn btn-danger">peruuta</a> <a
+				href="/index" class="btn btn-primary">Etusivu</a>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Muokkaa</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}">
+</head>
+<body>
+
+    <div>
+
+        <h3>Lisää Vaihtoehto</h3>
+        <br>
+
+        <form th:object="${vaihtoehto}" th:action="@{savevaihtoehto}" method="post">
+
+            <div>
+                <label for="Vaihtoehto">Vaihtoehto</label> <input type="text"
+                    id="Vaihtoehto" th:field="*{Vaihtoehto}">
+            </div>
+
+
+            <br>
+
+            <div>
+                <label for="kysymys">Mihin kysymykseen vaihtoehto kuuluu?:</label> <br>
+                <select id="KysymysID" th:field="*{kysymys}">
+                    <option value="Valitse">Valitse kysymys</option>
+                    <option th:each="kysymys : ${kysymykset}" th:value="${kysymys.KysymysID}"
+                        th:text="${kysymys.kysymys}"></option>
+                </select>
+
+            </div>
+            <br>
+
+            <button type="submit" class="btn btn-success">Tallenna
+                Vastaus</button>
+            <a href="/vaihtoehtolista" class="btn btn-danger">Peruuta</a> <a
+                href="/index" class="btn btn-primary">Etusivu</a>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
